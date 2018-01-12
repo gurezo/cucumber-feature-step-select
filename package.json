@@ -16,8 +16,8 @@
     "jenkins:test": "npm run lint && npm run test && npm run build",
     "post-build": "npm run post-build:version",
     "post-build:version": "node ./src/build/version.js",
-    "start:sc": "ng serve -pc proxy.scenario.conf.js",
-    "scenario": "ng e2e -pc proxy.scenario.conf.js -c protractor.scenario.conf.js"
+    "start:sc": "ng serve",
+    "scenario": "ng e2e -c protractor.scenario.conf.js"
   },
   "private": true,
   "dependencies": {
