@@ -1,8 +1,6 @@
 # cucumber-feature-step-select
 this is cucumber sample that feature files step select
 
-# CucumberFeatureStepSelect
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.4.
 
 ## Development server
