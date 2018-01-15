@@ -1,3 +1,4 @@
 npm run node_modules/bin/protractor protractor.scenario.conf.js --cucumberOpts.tags=@sample02 --cucumberOpts.tags=@sample01
-ng e2e --specs=scenario/steps/sample02.steps.ts --specs=scenario/steps/sample01.steps.ts
 ng e2e --specs=scenario/specs/sample02.feature --specs=scenario/specs/sample01.feature
+
+ng e2e -c protractor.scenario.conf.js --cucumberOpts.name=sample02.feature --cucumberOpts.name=sample01.feature
