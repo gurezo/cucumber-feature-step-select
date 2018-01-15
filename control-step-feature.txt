@@ -1,0 +1,43 @@
+[36m@active[39m
+Feature: sample03
+
+    User can create project
+
+  [36m@active[39m
+  Scenario: sample03
+  [33m? Then sample03[39m
+
+[36m@active[39m
+Feature: sample02
+
+    User can create project
+
+  [36m@active[39m
+  Scenario: sample02
+  [33m? Then sample02[39m
+
+Warnings:
+
+1) Scenario: [1msample03[22m - [90mscenario/specs/sample03.feature:5[39m
+   Step: [1mThen sample03[22m - [90mscenario/specs/sample03.feature:6[39m
+   Message:
+     [33mUndefined. Implement with the following snippet:
+
+       this.Then(/^sample(\d+)$/, function (arg1, callback) {
+         // Write code here that turns the phrase above into concrete actions
+         callback(null, 'pending');
+       });[39m
+
+2) Scenario: [1msample02[22m - [90mscenario/specs/sample02.feature:5[39m
+   Step: [1mThen sample02[22m - [90mscenario/specs/sample02.feature:6[39m
+   Message:
+     [33mUndefined. Implement with the following snippet:
+
+       this.Then(/^sample(\d+)$/, function (arg1, callback) {
+         // Write code here that turns the phrase above into concrete actions
+         callback(null, 'pending');
+       });[39m
+
+2 scenarios ([33m2 undefined[39m)
+2 steps ([33m2 undefined[39m)
+0m00.000s
