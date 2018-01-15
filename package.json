@@ -17,7 +17,7 @@
     "post-build": "npm run post-build:version",
     "post-build:version": "node ./src/build/version.js",
     "start:sc": "ng serve",
-    "scenario": "ng e2e -c protractor.scenario.conf.js  -- --specs=scenario/specs/sample02.feature --specs=scenario/specs/sample01.feature"
+    "scenario": "ng e2e -c protractor.scenario.conf.js"
   },
   "private": true,
   "dependencies": {

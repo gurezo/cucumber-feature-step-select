@@ -1,4 +1,5 @@
 @active
+# @sample03
 # @disabled
 Feature: sample03
   User can create project
