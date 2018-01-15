@@ -35,6 +35,9 @@ exports.config = {
   cucumberOpts: {
     tags: [
       '@active',
+      '@sample01',
+      '@sample02',
+      '@sample03',
       '~@disabled'
     ],
     require: 'scenario/**/{*.steps.ts,*.helper.ts}',

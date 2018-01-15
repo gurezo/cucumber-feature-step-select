@@ -1,4 +1,5 @@
-@active
+# @active
+@sample03
 Feature: sample03
   User can create project
 
