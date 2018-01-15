@@ -41,6 +41,11 @@ exports.config = {
     format: 'pretty',
     strict: true
   },
+  specs: [
+    'scenario/specs/sample03.feature',
+    'scenario/specs/sample01.feature',
+    'scenario/specs/sample02.feature'
+  ],
   beforeLaunch: function () {
     require('ts-node').register({
       project: 'scenario/tsconfig.e2e.json'

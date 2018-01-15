@@ -1,7 +1,7 @@
 @active
 # @sample01
 Feature: sample01
-  User can create project
+  Specify a feature file test 1
 
   Scenario: sample01
-    Then sample01
+    Then SampleScenario1
