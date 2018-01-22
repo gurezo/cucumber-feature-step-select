@@ -35,6 +35,7 @@ exports.config = {
   capabilities: {
     'browserName': 'internet explorer',
     'platform': 'ANY',
+    'ignoreProtectedModeSettings': true,
     'version': '11'
   },
   // localSeleniumStandaloneOpts: {
