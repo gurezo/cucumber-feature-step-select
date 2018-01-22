@@ -14,21 +14,41 @@ exports.config = {
   // capabilities: {
   //   'browserName': 'chrome'
   // },
+  // capabilities: {
+  //   'browserName': 'chrome',
+  //   'platform': 'ANY',
+  //   'version': 'ANY',
+  //   'chromeOptions': {
+  //     args: ['--no-sandbox', '--test-type=browser'],
+  //     prefs: {
+  //       'download': {
+  //         'prompt_for_download': false,
+  //         'default_directory': './downloads/',
+  //       }
+  //     }
+  //   }
+  // },
+  // directConnect: true,
+  seleniumServerJar: './node_modules/protractor/node_modules/webdriver-manager/selenium/selenium-server-standalone-3.8.1.jar',
+  seleniumPort: 4444,
+  directConnect: false,
   capabilities: {
-    'browserName': 'chrome',
+    'browserName': 'internet explorer',
     'platform': 'ANY',
-    'version': 'ANY',
-    'chromeOptions': {
-      args: ['--no-sandbox', '--test-type=browser'],
-      prefs: {
-        'download': {
-          'prompt_for_download': false,
-          'default_directory': './downloads/',
-        }
-      }
-    }
+    'version': '11'
   },
-  directConnect: true,
+  // localSeleniumStandaloneOpts: {
+  //   jvmArgs: [
+  //     '-Dwebdriver.ie.driver=node_modules/protractor/node_modules/webdriver-manager/selenium/IEDriverServer3.8.0.exe'
+  //   ]
+  // },
+  // seleniumArgs: ['-Dwebdriver.ie.driver=node_modules/protractor/node_modules/webdriver-manager/selenium/IEDriverServer3.8.0.exe'],
+  // seleniumArgs: ['-Dwebdriver.ie.driver=c:/Windows/System32/IEDriverServer3.8.0.exe'],
+  // multiCapabilities: {
+  //   'browserName': 'internet explorer',
+  //   'platform': 'ANY',
+  //   'version': '11'
+  // },
   baseUrl: 'http://localhost:4200/',
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
