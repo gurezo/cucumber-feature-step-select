@@ -34,6 +34,14 @@ module.exports = function (config) {
     capabilities: {
       'browserName': 'IE'
     },
+    customLaunchers: {
+      'IE11': {
+        base: 'WebDriver',
+        config: webdriverConfig,
+        browserName: 'internet explorer',
+        name: 'Karma'
+      }
+    },
     // customLaunchers: {
     //   'IE_no_addons': {
     //     base: 'IE',
