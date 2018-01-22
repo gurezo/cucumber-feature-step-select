@@ -29,11 +29,11 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     // browsers: ['Chrome'],
-    browsers: ['IE'],
+    // browsers: ['IE'],
     // browsers: ['IE_no_addons'],
-    // capabilities: {
-    //   'browserName': 'IE'
-    // },
+    capabilities: {
+      'browserName': 'IE'
+    },
     // customLaunchers: {
     //   'IE_no_addons': {
     //     base: 'IE',
