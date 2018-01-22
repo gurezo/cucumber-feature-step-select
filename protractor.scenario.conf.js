@@ -29,8 +29,8 @@ exports.config = {
   //   }
   // },
   // directConnect: true,
-  seleniumServerJar: './node_modules/protractor/node_modules/webdriver-manager/selenium/selenium-server-standalone-3.8.1.jar',
-  seleniumPort: 4444,
+  // seleniumServerJar: './node_modules/protractor/node_modules/webdriver-manager/selenium/selenium-server-standalone-3.8.1.jar',
+  // seleniumPort: 4444,
   directConnect: false,
   capabilities: {
     'browserName': 'internet explorer',
