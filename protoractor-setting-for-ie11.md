@@ -44,7 +44,7 @@ this page explain to Protoractor setting for Internet Explorer 11.
         Environment variable Window closed.
 1. checking to the above settings
     1. start `command pronpt`
-    1. excute commnd. (It is OK if it is as follows.)
+    1. excute commn. (It is OK if it is as follows.)
     ```
     C:\Users\loginUser>javac -version
     javac 1.8.0_161
@@ -83,7 +83,7 @@ this page explain to Protoractor setting for Internet Explorer 11.
         - Trust sites
         - Restricted sites
 1. In `Privacy` tab 
-    - Accept All Cookie slider Lower to the bottom
+    - Accept All Cookie slider Lower to the bottom
     - TurnOff PopUp Blocker
 1. In `Advanced` tab
      - checkbox TurnOff
@@ -132,7 +132,7 @@ this page explain to Protoractor setting for Internet Explorer 11.
           :
           :
         // very important setting ---------------
-        // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
         directConnect: false,
         capabilities: {
           'browserName': 'internet explorer',
