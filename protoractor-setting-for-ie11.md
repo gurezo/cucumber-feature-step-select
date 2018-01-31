@@ -44,9 +44,9 @@ this page explain to Protractor setting for Internet Explorer 11.
         Environment variable Window close.
 1. checking to the above settings
     1. start `command prompt`
-    1. excute commn. (It is OK if it is as follows.)
+    1. excute command. (It is OK if it is as follows.)
     ```
-    C:\Users\ `loginUser` >javac -version
+    C:\Users\loginUser>javac -version
     javac 1.8.0_161
     ```
 1. For your reference
