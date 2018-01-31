@@ -1,7 +1,7 @@
-# Protoractor Setting for Internet Explorer 11
+# Protractor Setting for Internet Explorer 11
 
 ## Overview
-this page explain to Protoractor setting for Internet Explorer 11.
+this page explain to Protractor setting for Internet Explorer 11.
 
 ## Outline
 - Windows PC Setting
@@ -9,7 +9,7 @@ this page explain to Protoractor setting for Internet Explorer 11.
   - Windows Registory setting
   - Internet Explorer 11 Browser setting
   - Internet Explorer Web Driver setting
-  - Protoractor setting
+  - Protractor setting
 
 ----
 
@@ -26,24 +26,24 @@ this page explain to Protoractor setting for Internet Explorer 11.
     1. System click.
     1. Advanced system setting click.
     1. Environment variable click.
-    1. setting to System variable
-        1. New button click.
-        1. type to Variable name:  
-          `JAVA_HOME`
-        1. type to Variable value:  
-          `C:\Program Files\Java\jdk1.8.0_161`
-        1. OK button click.
-    1. editing to System variable
-        1. `path` row click.
-        1. Edit button click.
-        1. New button click.
-        1. input to cursor prompt.  
-          `C:\Program Files\Java\jdk1.8.0_161\bin`
-        1. OK button click.
-    1. OK button click.  
-        Environment variable Window closed.
+    1. setting to System variables frame
+        1. click New button.
+          1. type to Variable name:  
+            `JAVA_HOME`
+          1. type to Variable value:  
+            `C:\Program Files\Java\jdk1.8.0_161`
+          1. click OK button.
+    1. editing to System variables frame
+        1. `path` click.
+          1. click Edit button.
+          1. click New button.
+          1. input to cursor prompt.  
+            `C:\Program Files\Java\jdk1.8.0_161\bin`
+          1. click OK button.
+    1. click OK button.  
+        Environment variable Window close.
 1. checking to the above settings
-    1. start `command pronpt`
+    1. start `command prompt`
     1. excute commn. (It is OK if it is as follows.)
     ```
     C:\Users\loginUser>javac -version
@@ -59,7 +59,7 @@ this page explain to Protoractor setting for Internet Explorer 11.
       - `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BFCACHE`
     - For 64-bit Windows
       - `HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BFCACHE`
-1. Registory key added.
+1. add Registory key.
     1. Value name: `iexplorer.exe`
     1. Value data: `0`
 1. End `regedit.exe`.
@@ -69,10 +69,10 @@ this page explain to Protoractor setting for Internet Explorer 11.
 
 #### ■ Internet Explorer 11 Browser setting
 1. Start `Internet Explorer 11` .
-1. `tools` row click.
+1. `tools` click.
 1. `Zoom` rate changed to `100%`
-1. `tools` row click.
-1. `internet options` row click.
+1. `tools` click.
+1. `internet options` click.
 1. In `General` tab
     - checkbox TurnOn
         - Delete browsing  history on exit
@@ -83,24 +83,23 @@ this page explain to Protoractor setting for Internet Explorer 11.
         - Trust sites
         - Restricted sites
 1. In `Privacy` tab 
-    - Accept All Cookie slider Lower to the bottom
-    - TurnOff PopUp Blocker
+    - checkbox turn `off` PopUp Blocker
 1. In `Advanced` tab
-     - checkbox TurnOff
+     - checkbox turn `off`
         - Check for publiser's certificate revoctation
         - Check for Server certificate revoctation*
         - Check for Signature on downloaded programs
         - Warn about certificate address mismatch*
         - Warn if changing between secure and not secure mode 
         - Warn if POST submittal is redirected to a zone that does not permit posts 
-     - checkbox TurnOn
+     - checkbox turn `on`
         - Empty Temporary Internet files folder when browser is closed.
 1. For your reference
     - [Protractor test in IE](https://stackoverflow.com/questions/37456099/protractor-test-in-ie)
 
 #### ■ Internet Explorer Web Driver setting
 1. Precondition
-    - repository cloned to `C:\work`
+    - repository already cloned to `C:\work`
 1. move dirctory
     ```
     $ cd C:\work\<repository name>\node_modules/protractor/bin/
@@ -112,16 +111,16 @@ this page explain to Protoractor setting for Internet Explorer 11.
 1. For your reference
     - [with protractor how to setup internet explorer configuration?](https://stackoverflow.com/questions/26395216/with-protractor-how-to-setup-internet-explorer-configuration)
 
-#### ■ Protoractor setting
-1. script added to package.json
+#### ■ Protractor setting
+1. script add to package.json
     - exmaple
     ```
     "scenario": "ng e2e -c protractor.conf.js",
     "scenario:ie": "ng e2e -c protractor.ie.conf.js"
     ```
-1. `protractor.ie.conf.js` created.
-    - IEDriver just used an  `IEDriverServer3.8.0.exe` .
-    - exmaple
+1. create `protractor.ie.conf.js`.
+    - IEDriver just used an  `IEDriverServer3.8.0.exe`.
+    - example
     ```
     // Protractor configuration file, see link for more information
     // https://github.com/angular/protractor/blob/master/lib/config.ts
