@@ -46,7 +46,7 @@ this page explain to Protractor setting for Internet Explorer 11.
     1. start `command prompt`
     1. excute commn. (It is OK if it is as follows.)
     ```
-    C:\Users\loginUser>javac -version
+    C:\Users\ `loginUser` >javac -version
     javac 1.8.0_161
     ```
 1. For your reference
@@ -68,13 +68,13 @@ this page explain to Protractor setting for Internet Explorer 11.
     - [Protractor test in IE](https://stackoverflow.com/questions/37456099/protractor-test-in-ie)
 
 #### ■ Internet Explorer 11 Browser setting
-1. Start `Internet Explorer 11` .
+1. Start `Internet Explorer 11`.
 1. `tools` click.
 1. `Zoom` rate changed to `100%`
 1. `tools` click.
 1. `internet options` click.
 1. In `General` tab
-    - checkbox TurnOn
+    - checkbox turn `on`
         - Delete browsing  history on exit
 1. In `Security` tab 
     - Disable protected mode for all zones
@@ -113,7 +113,7 @@ this page explain to Protractor setting for Internet Explorer 11.
 
 #### ■ Protractor setting
 1. script add to package.json
-    - exmaple
+    - example
     ```
     "scenario": "ng e2e -c protractor.conf.js",
     "scenario:ie": "ng e2e -c protractor.ie.conf.js"
