@@ -1,13 +1,16 @@
 ## Protractor Implementation tips for Internet Explorer 11
 
-### ■ resolve issue
+### ● trouble outline
+- IE11 click trouble: resolve
+- IE11 path get trouble: resolve
+- IE11 mouse over trouble: `un`resolve
+- IE11 drag & drop trouble: `un`resolve
 
-#### ● click issue
+### ● IE11 click trouble: resolve
 - **cause**
-```
-Troubles when events are not triggered when e2e test is done with IE11
-```
-
+  ```
+  Troubles when events are not triggered when e2e test is done with IE11
+  ```
 - **resoleve tips**
   - protractor.conf.js setteing
     ```
@@ -84,7 +87,9 @@ Troubles when events are not triggered when e2e test is done with IE11
 - **For your reference**
   - [IE11 click trouble #3](https://github.com/gurezo/cucumber-feature-step-select/issues/3)
 
-#### ● click issue
+----
+
+### ● IE11 path get trouble: resolve
 - **cause**
 ```
 Troubles when you can not get the path when doing the e2e test with IE11
@@ -122,7 +127,8 @@ example code
   C:\work\sampleReop and \downloads\sample\sample.csv
 ```
 - **resoleve tips**
-  - Window OS not used `pwd` from `child_process.exec`
+  - Window OS did'nt use to `pwd` from `child_process.exec`
+  - Keep path information in json, get it with js
   - FilePathHelper.js, FilePath.json, FilePath.js for Windows create.
     - FilePathHelper.js
     ```
@@ -197,19 +203,93 @@ example code
         "FilePath": "C:\\work\\test1\\test1.csv"
       },
       {
-        "FileType": "test2CSV",
-        "FilePath": "C:\\work\\test2\\test2.csv"
+        "FileType": "test2JSON",
+        "FilePath": "C:\\work\\test2\\test2.json"
       }
     ]  
     ```
+  - some use case
+    - some steps.ts fule
+    ```
+    import { browser, element, by } from 'protractor';
+    import * as chai from 'chai';
+    import * as cuid from 'cuid';
+    import * as child_process from 'child_process';
 
+    // FilePath.json 読み込み用 js
+    const fileInfo = require('../../FilePath.js');    
+
+    this.Then(/^Some Scenario Chekc$/, async function () {
+      await browser.sleep(3000);
+      const fs = require('fs');
+      const csv = require('csv');
+      const path = require('path');
+      let cmd = null;
+      let pwd = null;
+      if (pageOpeHelper.isWindows()) {
+        cmd = `@cd`
+      } else {
+        cmd = `pwd`
+      }
+
+      child_process.exec(cmd, (error, stdout, stderr) => {
+          if (error) {
+          console.error('stderr', stderr);
+          throw error;
+        }
+        pwd = stdout.replace(/\n$/, '');
+        console.log(pwd);
+      });
+      await browser.waitForAngular();
+
+      let FILE = '';
+      let json = '';
+      if (pageOpeHelper.isWindows()) {
+        // Windows
+        const csvInfo = fileInfo.getInformation(fileInfo.FILE_TYPE_MODEL_CSV);
+        const jsonInfo = fileInfo.getInformation(fileInfo.FILE_TYPE_MODEL_JSON);
+        FILE = path.join(csvInfo.FilePath);
+        json = require(jsonInfo.FilePath);
+      } else {
+        // Other OS
+        FILE = path.join(`${pwd}/downloads/test1/test1.csv`);
+        json = require(`${pwd}/downloads/test2/test2.json`);
+      }
+      :
+      :
+      :
+    });
+
+    ```
 - **For your reference**
   - [Template literals No support for IE11](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
   - [IE11 path get trouble #6](https://github.com/gurezo/cucumber-feature-step-select/issues/6)
 
+----
+
+### ● IE11 mouse over trouble: `un`resolve
+- **cause**
+  ```
+  Trouble with mouse move not working when e2e test is done with IE11
+  To be exact, the effect time of mouse over is much shorter than Chrome, IE 11
+  ```
+- **resoleve tips**
+  ```
+  At the moment, no solution has been found
+  ```
+- **For your reference**
+  - [IE11 mouse move trouble #4](https://github.com/gurezo/cucumber-feature-step-select/issues/4)
 
 ----
 
-
-### ■ `un`resolved issue
-#### ● mouse over issue
+### ● IE11 drag & drop trouble: `un`resolve
+- **cause**
+  ```
+  Trouble with drag and drop not working when e2e test is done with IE11
+  ```
+- **resoleve tips**
+  ```
+  At the moment, no solution has been found
+  ```
+- **For your reference**
+  - [IE11 drag & drop trouble #7](https://github.com/gurezo/cucumber-feature-step-select/issues/7)
