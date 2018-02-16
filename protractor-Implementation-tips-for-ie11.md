@@ -5,7 +5,7 @@
 #### ● click issue
 - **cause**
 ```
-click event may not fire.
+Troubles when events are not triggered when e2e test is done with IE11
 ```
 
 - **resoleve tips**
@@ -83,6 +83,133 @@ click event may not fire.
     ```
 - **For your reference**
   - [IE11 click trouble #3](https://github.com/gurezo/cucumber-feature-step-select/issues/3)
+
+#### ● click issue
+- **cause**
+```
+Troubles when you can not get the path when doing the e2e test with IE11
+Accurately, you can get a pass but behave like a mystery when trying to edit
+
+example code 
+
+  child_process.exec(`@cd`, (error, stdout, stderr) => {
+      if (error) {
+      console.error('stderr', stderr);
+      throw error;
+    }
+    pwd = stdout.replace(/\n$/, '');
+    console.log(pwd);
+  });
+  await browser.waitForAngular();
+    :
+
+  console.log(‘pwd check’);
+  console.log(`${pwd}`);
+  const csvPath = `\\downloads\\sample\\sample.csv`;
+  console.log(‘csvPath’);
+  console.log(`${pwd} and ${csvPath}`);
+
+  // Actual Behavior
+  pwd check
+  C:\work\sampleReop
+  csvPath
+  and \downloads\sample\sample.csv
+
+  // mystery that `$ {pwd}` disappears for some reason
+
+  // Expected Behavior
+  C:\work\sampleReop
+  C:\work\sampleReop and \downloads\sample\sample.csv
+```
+- **resoleve tips**
+  - Window OS not used `pwd` from `child_process.exec`
+  - FilePathHelper.js, FilePath.json, FilePath.js for Windows create.
+    - FilePathHelper.js
+    ```
+    import { browser } from 'protractor';
+
+    // branch proccessing for each browser
+    export class FilePathHelper {
+      private browserName: string = null;
+      private BROWSER_NAME_IE = 'internet explorer';
+      private OS_NAME_WINDOWS = 'Windows';
+      private osInfo = require('os');
+
+      constructor() {
+        // when instance created, get browserName.
+        browser.getCapabilities().then((cap) => {
+          this.browserName = cap.get('browserName');
+        });
+      }
+
+      isIE(): boolean {
+        if (this.browserName === this.BROWSER_NAME_IE) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      isWindows(): boolean {
+        if (this.osInfo.type().toString().match(this.OS_NAME_WINDOWS)) {
+          console.log('Windows !!!');
+          return true;
+        } else {
+          console.log('Other OS !!!');
+          return false;
+        }
+      }
+    }
+    ```
+    - FilePath.js
+    ```
+    'use strict';
+
+    const FILE_TYPE_MODEL_CSV = 'ModelCSV';
+    const FILE_TYPE_MODEL_JSON = 'ModelJson';
+    const FILE_TYPE_PREDICTION_CSV = 'PredictionCSV';
+
+    const getInformation = function(target) {
+      const json = require('./FilePath.json');
+      
+      console.log('target: ' + target);
+      if (target === undefined) {
+        return json[0];
+      }
+      for (let rec in json) {
+        if (json[rec].FileType === target) {
+          console.log('json[rec].FileType: ' + json[rec].FileType);
+          return json[rec];
+        }
+      }
+    };
+
+    exports.FILE_TYPE_MODEL_CSV = FILE_TYPE_MODEL_CSV;
+    exports.FILE_TYPE_MODEL_JSON = FILE_TYPE_MODEL_JSON;
+    exports.FILE_TYPE_PREDICTION_CSV = FILE_TYPE_PREDICTION_CSV;
+    exports.getInformation = getInformation;    
+    ```
+    - FilePath.json
+    ```
+    [
+      {
+        "FileType": "test1CSV",
+        "FilePath": "C:\\work\\test1\\test1.csv"
+      },
+      {
+        "FileType": "test2CSV",
+        "FilePath": "C:\\work\\test2\\test2.csv"
+      }
+    ]  
+    ```
+
+- **For your reference**
+  - [Template literals No support for IE11](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+  - [IE11 path get trouble #6](https://github.com/gurezo/cucumber-feature-step-select/issues/6)
+
+
+----
+
 
 ### ■ `un`resolved issue
 #### ● mouse over issue
