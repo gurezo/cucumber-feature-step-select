@@ -84,6 +84,15 @@
       }
     }
     ```
+  - some use case
+    - some steps.ts file
+    ```
+    this.Then(/^Click Scenario$/, async function() {
+      await browser.waitForAngular();
+      await ClickHelper.click(someObj.getMethos().get(0));
+    });
+
+    ```
 - **For your reference**
   - [IE11 click trouble #3](https://github.com/gurezo/cucumber-feature-step-select/issues/3)
 
@@ -91,41 +100,41 @@
 
 ### ● IE11 path get trouble: resolve
 - **cause**
-```
-Troubles when you can not get the path when doing the e2e test with IE11
-Accurately, you can get a pass but behave like a mystery when trying to edit
+  ```
+  Troubles when you can not get the path when doing the e2e test with IE11
+  Accurately, you can get a pass but behave like a mystery when trying to edit
 
-example code 
+  example code 
 
-  child_process.exec(`@cd`, (error, stdout, stderr) => {
-      if (error) {
-      console.error('stderr', stderr);
-      throw error;
-    }
-    pwd = stdout.replace(/\n$/, '');
-    console.log(pwd);
-  });
-  await browser.waitForAngular();
-    :
+    child_process.exec(`@cd`, (error, stdout, stderr) => {
+        if (error) {
+        console.error('stderr', stderr);
+        throw error;
+      }
+      pwd = stdout.replace(/\n$/, '');
+      console.log(pwd);
+    });
+    await browser.waitForAngular();
+      :
 
-  console.log(‘pwd check’);
-  console.log(`${pwd}`);
-  const csvPath = `\\downloads\\sample\\sample.csv`;
-  console.log(‘csvPath’);
-  console.log(`${pwd} and ${csvPath}`);
+    console.log(‘pwd check’);
+    console.log(`${pwd}`);
+    const csvPath = `\\downloads\\sample\\sample.csv`;
+    console.log(‘csvPath’);
+    console.log(`${pwd} and ${csvPath}`);
 
-  // Actual Behavior
-  pwd check
-  C:\work\sampleReop
-  csvPath
-  and \downloads\sample\sample.csv
+    // Actual Behavior
+    pwd check
+    C:\work\sampleReop
+    csvPath
+    and \downloads\sample\sample.csv
 
-  // mystery that `$ {pwd}` disappears for some reason
+    // mystery that `$ {pwd}` disappears for some reason
 
-  // Expected Behavior
-  C:\work\sampleReop
-  C:\work\sampleReop and \downloads\sample\sample.csv
-```
+    // Expected Behavior
+    C:\work\sampleReop
+    C:\work\sampleReop and \downloads\sample\sample.csv
+  ```
 - **resoleve tips**
   - Window OS did'nt use to `pwd` from `child_process.exec`
   - Keep path information in json, get it with js
@@ -171,9 +180,8 @@ example code
     ```
     'use strict';
 
-    const FILE_TYPE_MODEL_CSV = 'ModelCSV';
-    const FILE_TYPE_MODEL_JSON = 'ModelJson';
-    const FILE_TYPE_PREDICTION_CSV = 'PredictionCSV';
+    const FILE_TYPE_TEST_CSV = 'testCSV';
+    const FILE_TYPE_TEST_JSON = 'testJson';
 
     const getInformation = function(target) {
       const json = require('./FilePath.json');
@@ -190,26 +198,25 @@ example code
       }
     };
 
-    exports.FILE_TYPE_MODEL_CSV = FILE_TYPE_MODEL_CSV;
-    exports.FILE_TYPE_MODEL_JSON = FILE_TYPE_MODEL_JSON;
-    exports.FILE_TYPE_PREDICTION_CSV = FILE_TYPE_PREDICTION_CSV;
+    exports.FILE_TYPE_TEST_CSV = FILE_TYPE_TEST_CSV;
+    exports.FILE_TYPE_TEST_JSON = FILE_TYPE_TEST_JSON;
     exports.getInformation = getInformation;    
     ```
     - FilePath.json
     ```
     [
       {
-        "FileType": "test1CSV",
-        "FilePath": "C:\\work\\test1\\test1.csv"
+        "FileType": "testCSV",
+        "FilePath": "C:\\work\\test1\\test.csv"
       },
       {
-        "FileType": "test2JSON",
-        "FilePath": "C:\\work\\test2\\test2.json"
+        "FileType": "testJson",
+        "FilePath": "C:\\work\\test2\\test.json"
       }
     ]  
     ```
   - some use case
-    - some steps.ts fule
+    - some steps.ts file
     ```
     import { browser, element, by } from 'protractor';
     import * as chai from 'chai';
@@ -246,14 +253,14 @@ example code
       let json = '';
       if (pageOpeHelper.isWindows()) {
         // Windows
-        const csvInfo = fileInfo.getInformation(fileInfo.FILE_TYPE_MODEL_CSV);
-        const jsonInfo = fileInfo.getInformation(fileInfo.FILE_TYPE_MODEL_JSON);
+        const csvInfo = fileInfo.getInformation(fileInfo.FILE_TYPE_TEST_CSV);
+        const jsonInfo = fileInfo.getInformation(fileInfo.FILE_TYPE_TEST_JSON);
         FILE = path.join(csvInfo.FilePath);
         json = require(jsonInfo.FilePath);
       } else {
         // Other OS
-        FILE = path.join(`${pwd}/downloads/test1/test1.csv`);
-        json = require(`${pwd}/downloads/test2/test2.json`);
+        FILE = path.join(`${pwd}/downloads/test1/test.csv`);
+        json = require(`${pwd}/downloads/test2/test.json`);
       }
       :
       :
