@@ -90,7 +90,6 @@ this page explain to Protractor setting for Internet Explorer 11.
         - Check for Server certificate revoctation*
         - Check for Signature on downloaded programs
         - Warn about certificate address mismatch*
-        - Warn if changing between secure and not secure mode 
         - Warn if POST submittal is redirected to a zone that does not permit posts 
      - checkbox turn `on`
         - Empty Temporary Internet files folder when browser is closed.
@@ -119,7 +118,7 @@ this page explain to Protractor setting for Internet Explorer 11.
     "scenario:ie": "ng e2e -c protractor.ie.conf.js"
     ```
 1. create `protractor.ie.conf.js`.
-    - IEDriver just used an  `IEDriverServer3.8.0.exe`.
+    - IEDriver just used an  `IEDriverServer3.9.0.exe`.
     - example
     ```
     // Protractor configuration file, see link for more information
@@ -136,16 +135,11 @@ this page explain to Protractor setting for Internet Explorer 11.
         capabilities: {
           'browserName': 'internet explorer',
           'platform': 'ANY',
-          'version': '11',
-          'nativeEvents': false,    
-          'unexpectedAlertBehaviour': 'accept',
-          'ignoreProtectedModeSettings': true,
-          'disable-popup-blocking': true,
-          'enablePersistentHover': true
+          'version': '11'
         },
         localSeleniumStandaloneOpts: {
             jvmArgs: [
-              '-Dwebdriver.ie.driver=node_modules/protractor/node_modules/webdriver-manager/selenium/IEDriverServer3.8.0.exe'
+              '-Dwebdriver.ie.driver=node_modules/protractor/node_modules/webdriver-manager/selenium/IEDriverServer3.9.0.exe'
             ]
         },
         // ⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡
@@ -163,4 +157,80 @@ this page explain to Protractor setting for Internet Explorer 11.
 1. For your reference
     - [Setting Up the Selenium Server](https://github.com/angular/protractor/blob/master/docs/server-setup.md)
     - [Karma IE Testing of Polymer Elements with WebDriver](https://japhr.blogspot.jp/2014/12/karma-ie-testing-of-polymer-elements.html)
+
+#### ■ Internet Explorer 11 Click test trouble shooting
+##### If you encounter a problem of Internet Explorer 11 click test trouble, Please try the following
+1. edit `protractor.ie.conf.js`.
+    - example
+    ```
+    // Protractor configuration file, see link for more information
+    // https://github.com/angular/protractor/blob/master/lib/config.ts
+
+    exports.config = {
+        SELENIUM_PROMISE_MANAGER: '0',
+        allScriptsTimeout: 900000,
+          :
+          :
+        directConnect: false,
+        capabilities: {
+          'browserName': 'internet explorer',
+          'platform': 'ANY',
+          'version': '11',
+          // very important setting add parameter---------------
+          // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+          'nativeEvents': false,    
+          'unexpectedAlertBehaviour': 'accept',
+          'ignoreProtectedModeSettings': true,
+          'disable-popup-blocking': true,
+          'enablePersistentHover': true
+          // ⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡⇡
+          // very important setting add parameter---------------
+        },
+        localSeleniumStandaloneOpts: {
+            jvmArgs: [
+              '-Dwebdriver.ie.driver=node_modules/protractor/node_modules/webdriver-manager/selenium/IEDriverServer3.9.0.exe'
+            ]
+        },
+        baseUrl: 'http://localhost:4200/',
+          :
+          :
+        beforeLaunch: function () {
+        require('ts-node').register({
+            project: 'scenario/tsconfig.e2e.json'
+        })
+        }
+    };  
+    ```
+1. create `sample.js`.
+    - example
+    ```
+    import { browser } from 'protractor';
+
+    // branch proccessing for each browser
+    export class PageOperationHelper {
+      private browserNmae: string = null;
+      private BROWSER_NAME_IE = 'internet explorer';
+
+      constructor() {
+        // when instance created, get browserName.
+        browser.getCapabilities().then((cap) => {
+          this.browserNmae = cap.get('browserName');
+        });
+      }
+
+      // for click events
+      async click(targetSelector) {
+        await browser.waitForAngular();
+        if (this.browserNmae === this.BROWSER_NAME_IE) {
+          // for internet explorer 11 code
+          await browser.executeScript('arguments[0].click();', targetSelector.getWebElement());
+        } else {
+          // for chrome code
+          await targetSelector.click();
+        }
+      }
+    }
+    ```
+1. For your reference
+    - [IE11 click trouble #3](https://github.com/gurezo/cucumber-feature-step-select/issues/3#issuecomment-361819962)
 
