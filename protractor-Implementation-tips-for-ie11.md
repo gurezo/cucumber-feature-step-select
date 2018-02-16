@@ -87,7 +87,7 @@
   - some use case
     - some steps.ts file
     ```
-    this.Then(/^Click Scenario$/, async function() {
+    this.Then(/^Click Test Scenario$/, async function() {
       await browser.waitForAngular();
       await ClickHelper.click(someObj.getMethos().get(0));
     });
