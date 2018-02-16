@@ -1,6 +1,6 @@
 ## Protractor Implementation tips for Internet Explorer 11
 
-### ● trouble outline
+### ● tips outline
 - IE11 click trouble: resolve
 - IE11 path get trouble: resolve
 - IE11 mouse over trouble: `un`resolve
