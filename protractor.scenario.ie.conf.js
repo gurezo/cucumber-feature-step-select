@@ -1,3 +1,6 @@
+// Protractor configuration file, see link for more information
+// https://github.com/angular/protractor/blob/master/lib/config.ts
+
 exports.config = {
   SELENIUM_PROMISE_MANAGER: '0',
   allScriptsTimeout: 900000,
@@ -7,21 +10,6 @@ exports.config = {
   suites: {
     smoke: './scenario/**/*.feature',
     e2e: './scenario/**/*.feature'
-  },
-  capabilities: {
-    'browserName': 'chrome',
-    'platform': 'ANY',
-    'version': 'ANY',
-    'chromeOptions': {
-      args: ['--no-sandbox', '--test-type=browser'],
-      prefs: {
-        'download': {
-          'prompt_for_download': false,
-          'directory_upgrade': true,
-          'default_directory': process.cwd() + './downloads/'
-        },
-      },
-    },
   },
   params: {
     timeouts: {
@@ -36,7 +24,22 @@ exports.config = {
       tableImport: 3 * 1000
     }
   },
-  directConnect: true,
+  directConnect: false,
+  capabilities: {
+    'browserName': 'internet explorer',
+    'platform': 'ANY',
+    'version': '11',
+    'nativeEvents': false,
+    'unexpectedAlertBehaviour': 'accept',
+    'ignoreProtectedModeSettings': true,
+    'disable-popup-blocking': true,
+    'enablePersistentHover': true
+  },
+  localSeleniumStandaloneOpts: {
+    jvmArgs: [
+      '-Dwebdriver.ie.driver=node_modules/protractor/node_modules/webdriver-manager/selenium/IEDriverServer3.9.0.exe'
+    ]
+  },
   baseUrl: 'http://localhost:4200/',
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
@@ -49,11 +52,6 @@ exports.config = {
     format: 'pretty',
     strict: true
   },
-  // specs: [
-  //   'scenario/specs/sample03.feature',
-  //   'scenario/specs/sample01.feature',
-  //   'scenario/specs/sample02.feature'
-  // ],
   beforeLaunch: function () {
     require('ts-node').register({
       project: 'scenario/tsconfig.e2e.json'

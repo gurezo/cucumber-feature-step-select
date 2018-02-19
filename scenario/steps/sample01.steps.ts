@@ -7,4 +7,5 @@ export default function () {
     // Write code here that turns the phrase above into concrete actions
     callback(null, 'pending');
   });
-};
+}
+

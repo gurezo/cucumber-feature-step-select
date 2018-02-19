@@ -1,5 +1,6 @@
-@active
-# @sample01
+@disabled
+# @active
+# @sample03
 Feature: sample03
   Specify a feature file test 3
 
