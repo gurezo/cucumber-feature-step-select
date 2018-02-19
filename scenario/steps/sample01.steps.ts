@@ -26,8 +26,11 @@ export default function () {
               pageOpeHelper.click(dispFrame.getClickClassText());
             });
     } else {
+      // for chrome
+      console.log('chrome come');
       browser.actions().mouseMove(dispFrame.getOverClassText()).perform();
-      await pageOpeHelper.click(dispFrame.getClickClassText());
+      // await pageOpeHelper.click(dispFrame.getClickClassText());
+      await dispFrame.getOverClassText().click();
     }
   });
 }
