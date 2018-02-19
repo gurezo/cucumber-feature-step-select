@@ -23,5 +23,6 @@ export class DispFrameComponentComponent implements OnInit {
 
   onIconClicked() {
     console.log('mouse move & click success!!!!');
+    alert('mouse move & click success!!!!');
   }
 }
