@@ -7,17 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DispFrameComponentComponent implements OnInit {
 
-  showDetailsIcon = true;
+  showDetailsIcon = false;
   constructor() { }
 
   ngOnInit() {
   }
 
   onMouseEnter() {
-    this.showDetailsIcon = false;
+    this.showDetailsIcon = true;
   }
 
   onMouseLeave() {
-    this.showDetailsIcon = true;
+    this.showDetailsIcon = false;
+  }
+
+  onIconClicked() {
+    console.log('mouse move & click success!!!!');
   }
 }
