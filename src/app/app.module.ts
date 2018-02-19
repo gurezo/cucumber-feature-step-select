@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { DispFrameComponentComponent } from './disp-frame-component/disp-frame-component.component';
+import { DispItemComponentComponent } from './disp-item-component/disp-item-component.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DispFrameComponentComponent,
+    DispItemComponentComponent
   ],
   imports: [
     BrowserModule

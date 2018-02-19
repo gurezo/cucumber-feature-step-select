@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run start:local",
-    "start:local": "ng serve -pc proxy.local.json",
-    "start:external": "ng serve -pc proxy.external.json",
+    "start:local": "ng serve",
+    "start:external": "ng serve",
     "build": "ng build --prod && npm run post-build",
     "test": "ng test -sr",
     "test:multi": "ng test",
