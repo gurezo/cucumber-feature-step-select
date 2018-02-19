@@ -4,5 +4,6 @@ Feature: sample01
   Specify a feature file test 1
 
   Scenario: sample01
-    Then SampleScenario1
+    Given Application is started
+    # Then SampleScenario1
     Then Mouse Over Test

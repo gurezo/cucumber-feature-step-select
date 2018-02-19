@@ -9,33 +9,36 @@ exports.config = {
     e2e: './scenario/**/*.feature'
   },
   capabilities: {
-    'browserName': 'chrome',
-    'platform': 'ANY',
-    'version': 'ANY' // ,
-    // 'chromeOptions': {
-    //   args: ['--no-sandbox', '--test-type=browser'],
-    //   prefs: {
-    //     'download': {
-    //       'prompt_for_download': false,
-    //       'directory_upgrade': true,
-    //       'default_directory': process.cwd() + './downloads/'
-    //     },
-    //   },
-    // },
+    'browserName': 'chrome'
   },
-  params: {
-    timeouts: {
-      default: 30 * 1000,
-      overylayInvisibility: 10 * 1000,
-      cleanupLong: 60 * 60 * 100
-    },
-    sleep: {
-      component: 1000,
-      modelDesignTask: 15 * 1000,
-      predictionTask: 10 * 1000,
-      tableImport: 3 * 1000
-    }
-  },
+  // capabilities: {
+  //   'browserName': 'chrome',
+  //   'platform': 'ANY',
+  //   'version': 'ANY',
+  //   'chromeOptions': {
+  //     args: ['--no-sandbox', '--test-type=browser'],
+  //     prefs: {
+  //       'download': {
+  //         'prompt_for_download': false,
+  //         'directory_upgrade': true,
+  //         'default_directory': process.cwd() + './downloads/'
+  //       },
+  //     },
+  //   },
+  // },
+  // params: {
+  //   timeouts: {
+  //     default: 30 * 1000,
+  //     overylayInvisibility: 10 * 1000,
+  //     cleanupLong: 60 * 60 * 100
+  //   },
+  //   sleep: {
+  //     component: 1000,
+  //     modelDesignTask: 15 * 1000,
+  //     predictionTask: 10 * 1000,
+  //     tableImport: 3 * 1000
+  //   }
+  // },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'custom',
