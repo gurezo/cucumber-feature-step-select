@@ -11,17 +11,17 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome',
     'platform': 'ANY',
-    'version': 'ANY',
-    'chromeOptions': {
-      args: ['--no-sandbox', '--test-type=browser'],
-      prefs: {
-        'download': {
-          'prompt_for_download': false,
-          'directory_upgrade': true,
-          'default_directory': process.cwd() + './downloads/'
-        },
-      },
-    },
+    'version': 'ANY' // ,
+    // 'chromeOptions': {
+    //   args: ['--no-sandbox', '--test-type=browser'],
+    //   prefs: {
+    //     'download': {
+    //       'prompt_for_download': false,
+    //       'directory_upgrade': true,
+    //       'default_directory': process.cwd() + './downloads/'
+    //     },
+    //   },
+    // },
   },
   params: {
     timeouts: {

@@ -13,7 +13,7 @@ export default function () {
     callback(null, 'pending');
   });
 
-  this.Then(/^Business Case Icon Click$/, async function () {
+  this.Then(/^Mouse Over Test$/, async function () {
     await browser.waitForAngular();
     if (pageOpeHelper.isIE()) {
       // for IE11

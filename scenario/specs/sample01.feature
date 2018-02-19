@@ -5,3 +5,4 @@ Feature: sample01
 
   Scenario: sample01
     Then SampleScenario1
+    Then Mouse Over Test
