@@ -11,8 +11,4 @@ export class DispItemComponentComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  onClick() {
-    console.log('click success!!!!');
-  }
 }
