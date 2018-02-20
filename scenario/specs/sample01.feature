@@ -7,3 +7,4 @@ Feature: sample01
     Given Application is started
     # Then SampleScenario1
     Then Mouse Over Test
+    Then Display Click Test

@@ -8,4 +8,7 @@ export class DispFramePage {
   getClickClassText() {
     return element(by.css('.clickClass'));
   }
+  getSuccessClassText() {
+    return element(by.css('.successClass'));
+  }
 }

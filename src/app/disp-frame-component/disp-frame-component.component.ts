@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DispFrameComponentComponent implements OnInit {
 
   showDetailsIcon = false;
+  showPArea = false;
   constructor() { }
 
   ngOnInit() {
@@ -22,6 +23,7 @@ export class DispFrameComponentComponent implements OnInit {
   }
 
   onIconClicked() {
+    this.showPArea = true;
     console.log('mouse move & click success!!!!');
     alert('mouse move & click success!!!!');
   }

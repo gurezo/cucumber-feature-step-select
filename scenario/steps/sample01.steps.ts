@@ -18,6 +18,9 @@ export default function () {
     if (pageOpeHelper.isIE()) {
       // for IE11
       console.log('ie come');
+      // browser.executeScript('arguments[0].fireEvent("mouseenter");', dispFrame.getOverClassText());
+      // browser.executeScript('arguments[0].mouseenter();', dispFrame.getOverClassText());
+      // await pageOpeHelper.click(dispFrame.getClickClassText());
       await browser.actions().
             mouseMove(dispFrame.getOverClassText()).
             perform().
@@ -32,6 +35,14 @@ export default function () {
       await pageOpeHelper.click(dispFrame.getClickClassText());
       // await dispFrame.getClickClassText().click();
     }
+    browser.sleep(3000);
   });
+  this.Then(/^Display Click Test$/, async function () {
+    await browser.waitForAngular();
+    browser.sleep(3000);
+    await pageOpeHelper.click(dispFrame.getSuccessClassText());
+    browser.sleep(3000);
+  });
+
 }
 
