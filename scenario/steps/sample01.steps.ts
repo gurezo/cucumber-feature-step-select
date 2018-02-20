@@ -21,13 +21,17 @@ export default function () {
       // browser.executeScript('arguments[0].fireEvent("mouseenter");', dispFrame.getOverClassText());
       // browser.executeScript('arguments[0].mouseenter();', dispFrame.getOverClassText());
       // await pageOpeHelper.click(dispFrame.getClickClassText());
+      // await browser.actions().
+      //       mouseMove(dispFrame.getOverClassText()).
+      //       perform().
+      //       then(() => {
+      //         // dispFrame.getClickClassText().click();
+      //         pageOpeHelper.click(dispFrame.getClickClassText());
+      //       });
       await browser.actions().
             mouseMove(dispFrame.getOverClassText()).
-            perform().
-            then(() => {
-              // dispFrame.getClickClassText().click();
-              pageOpeHelper.click(dispFrame.getClickClassText());
-            });
+            perform();
+      await pageOpeHelper.click(dispFrame.getClickClassText());
     } else {
       // for chrome
       console.log('chrome come');
