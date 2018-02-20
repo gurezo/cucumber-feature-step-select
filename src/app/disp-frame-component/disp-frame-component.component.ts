@@ -15,10 +15,12 @@ export class DispFrameComponentComponent implements OnInit {
   }
 
   onMouseEnter() {
+    console.log('onMouseEnter success!!!!');
     this.showDetailsIcon = true;
   }
 
   onMouseLeave() {
+    console.log('onMouseLeave success!!!!');
     this.showDetailsIcon = false;
   }
 
