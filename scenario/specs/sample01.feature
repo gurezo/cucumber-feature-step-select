@@ -1,4 +1,5 @@
-@active
+@disabled
+# @active
 # @sample01
 Feature: sample01
   Specify a feature file test 1

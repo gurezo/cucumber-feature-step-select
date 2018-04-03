@@ -1,7 +1,7 @@
 import { browser } from 'protractor';
 
 // branch proccessing for each browser
-export class PageOperationHelper {
+export class ClickHelper {
   private browserName: string = null;
   private BROWSER_NAME_IE = 'internet explorer';
   private OS_NAME_WINDOWS = 'Windows';

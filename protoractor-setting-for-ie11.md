@@ -207,7 +207,7 @@ this page explain to Protractor setting for Internet Explorer 11.
     import { browser } from 'protractor';
 
     // branch proccessing for each browser
-    export class PageOperationHelper {
+    export class ClickHelper {
       private browserNmae: string = null;
       private BROWSER_NAME_IE = 'internet explorer';
 
