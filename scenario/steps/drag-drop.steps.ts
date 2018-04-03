@@ -22,7 +22,7 @@ export default function() {
     await browser.sleep(5000);
     await drive.getpasswordform().click();
     await drive.getpasswordform().clear();
-    await drive.getpasswordform().sendKeys('19950717gen');
+    await drive.getpasswordform().sendKeys('testtest');
     await drive.getloginbutton().click();
     await browser.sleep(2000);
   });
